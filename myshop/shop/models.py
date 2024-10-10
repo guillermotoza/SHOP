@@ -12,7 +12,7 @@ class Category(models.Model):
             models.Index(fields=['name']),
         ]
         verbose_name = 'category'
-        verbose_name_plural = 'categories'
+        verbose_name_plural = 'categories' 
 
     def __str__(self):
         return self.name

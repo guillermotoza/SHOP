@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -129,8 +130,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
 CART_SESSION_ID = 'cart'
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'juan.torreszfgr@gmail.com'
+EMAIL_HOST_PASSWORD = 'pnaz nurq kgvy pf'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
