@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from orders.models import Order
 
-# create the Stripe instance
+# Creamos la instancia con Stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
 stripe.api_version = settings.STRIPE_API_VERSION
 
@@ -19,8 +19,8 @@ def payment_process(request):
                         reverse('payment:completed'))
         cancel_url = request.build_absolute_uri(
                         reverse('payment:canceled'))
-
-        # Stripe checkout session data
+        
+        # checkout Stripe
         session_data = {
             'mode': 'payment',
             'client_reference_id': order.id,
@@ -28,7 +28,7 @@ def payment_process(request):
             'cancel_url': cancel_url,
             'line_items': []
         }
-        # add order items to the Stripe checkout session
+        # para que Stripe haga los debidos calculos y saque el debido cobro a la persona
         for item in order.items.all():
             session_data['line_items'].append({
                 'price_data': {
@@ -41,16 +41,16 @@ def payment_process(request):
                 'quantity': item.quantity,
             })
 
-        # create Stripe checkout session
-        session = stripe.checkout.Session.create(**session_data)
+        # crea la instancia nueva de Stripe.
+        session = stripe.checkout.Session.create(**session_data) #arrastra la biblioteca y le asigna un id a cada campo
 
-        # redirect to Stripe payment form
+        # Se redirige para completar el pago.
         return redirect(session.url, code=303)
 
     else:
         return render(request, 'payment/process.html', locals())
 
-
+#Se definen las Urls para completar y cancelar el pago.
 def payment_completed(request):
     return render(request, 'payment/completed.html')
 

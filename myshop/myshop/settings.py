@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -137,6 +136,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'juan.torreszfgr@gmail.com'
-EMAIL_HOST_PASSWORD = 'pnaz nurq kgvy pf'
+EMAIL_HOST_PASSWORD = 'lynazyfvknkbdchr'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51Q8SH0EOllv2TEjsYm2bvMrMsuYJ66RsVM7zyK9cZRpIu4GihziRFIXOz2DlLaLarPKLWF2FyRqI407CLNCfhb1O00rfVQGqvf'
+STRIPE_SECRET_KEY = 'sk_test_51Q8SH0EOllv2TEjsRif0MlHU7XzRYqklwOhYdeFURVkuNXRoBWSoubKvcELmHezx8bXEwcos89kmf20O0dpscgYI00IBAOuCKB'
+STRIPE_API_VERSION = '2022-08-01'
