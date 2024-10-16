@@ -1,8 +1,5 @@
-from io import BytesIO
 from celery import shared_task
-from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
-from django.conf import settings
 from orders.models import Order
 
 
@@ -21,9 +18,3 @@ def payment_completed(order_id):
                          'admin@myshop.com',
                          [order.email])
 
-    # attach PDF file
-    email.attach(f'order_{order.id}.pdf',
-                 out.getvalue(),
-                 'application/pdf')
-    # send e-mail
-    email.send()
